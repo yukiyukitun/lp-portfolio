@@ -1,6 +1,9 @@
 'use client'
 
+import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
+import AnimatedText from './AnimatedText'
+import Reveal from './Reveal'
 
 interface FaqItem {
   question: string
@@ -33,59 +36,90 @@ const faqs: FaqItem[] = [
     answer:
       'いいえ、入会は任意です。体験レッスン後に強引なご案内や勧誘は一切行いません。「続けてみたい」と感じた方だけ、ご都合に合わせてご検討ください。',
   },
+  {
+    question: '年齢制限はありますか？',
+    answer:
+      '18歳以上の女性の方にご利用いただけます。年齢や経験に関係なく、体の状態に合わせてご案内します。',
+  },
+  {
+    question: '体が硬くても大丈夫ですか？',
+    answer:
+      '問題ありません。無理に伸ばすのではなく、呼吸に合わせて心地よく動くことを大切にしています。',
+  },
+  {
+    question: 'キャンセルはできますか？',
+    answer:
+      'レッスンの2時間前までにLINEからご連絡ください。急な体調不良の場合もお気軽にご相談ください。',
+  },
 ]
 
 export default function FaqSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
-
-  const toggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index)
-  }
+  const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <section className="py-20 bg-yoga-base">
-      <div className="max-w-3xl mx-auto px-6">
+    <section id="faq" className="bg-yoga-base py-16 md:py-20">
+      <div className="mx-auto w-full max-w-[58rem] px-5 md:px-8">
 
-        <div className="text-center mb-14">
-          <p className="text-yoga-cta text-xs tracking-[0.3em] uppercase mb-3">FAQ</p>
-          <h2 className="font-mincho text-3xl md:text-4xl text-yoga-brown">
-            よくあるご質問
+        <Reveal className="mb-10 text-center">
+          <div className="mx-auto mb-5 flex max-w-xl items-center gap-4">
+            <span className="fine-line flex-1" />
+            <p className="text-xs uppercase tracking-[0.3em] text-yoga-cta">FAQ</p>
+            <span className="fine-line flex-1" />
+          </div>
+          <h2 className="font-mincho text-3xl text-yoga-brown md:text-4xl">
+            <AnimatedText text="よくあるご質問" />
           </h2>
-        </div>
+        </Reveal>
 
-        <div className="space-y-3">
+        <div className="mx-auto flex w-full max-w-full flex-col gap-3">
           {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl overflow-hidden border border-yoga-green/20 shadow-sm"
+            <Reveal
+              key={faq.question}
+              delay={index * 70}
+              className="w-full max-w-full overflow-hidden rounded-2xl bg-white/86 shadow-[0_12px_34px_rgb(75_61_51/0.05)]"
             >
               <button
-                onClick={() => toggle(index)}
-                className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-yoga-green/5 transition-colors duration-200"
+                type="button"
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                className="flex w-full max-w-full items-center gap-4 px-5 py-5 text-left transition-colors duration-300 hover:bg-white md:px-6"
                 aria-expanded={openIndex === index}
+                data-cursor
               >
-                <span className="font-medium text-yoga-brown pr-4 leading-snug">
+                <span className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-full bg-yoga-pink/85 font-mincho text-base text-white shadow-[0_8px_18px_rgb(215_167_161/0.24)]">
+                  Q
+                </span>
+                <span className="min-w-0 flex-1 text-[1.02rem] font-semibold leading-[1.65] text-yoga-brown md:text-[1.08rem]">
                   {faq.question}
                 </span>
                 <span
-                  className={`flex-shrink-0 w-7 h-7 rounded-full border-2 border-yoga-cta/50 flex items-center justify-center transition-transform duration-300 ${
-                    openIndex === index ? 'rotate-45' : ''
-                  }`}
+                  className="grid h-8 w-8 flex-shrink-0 place-items-center rounded-full border border-yoga-pink/70 text-xl leading-none text-yoga-rose transition-transform duration-300"
                   aria-hidden="true"
                 >
-                  <span className="text-yoga-cta text-lg leading-none font-light">+</span>
+                  <span className={openIndex === index ? 'rotate-45 transition-transform duration-300' : 'transition-transform duration-300'}>
+                    +
+                  </span>
                 </span>
               </button>
-              <div
-                className={`transition-all duration-300 overflow-hidden ${
-                  openIndex === index ? 'max-h-48' : 'max-h-0'
-                }`}
-              >
-                <p className="px-6 pb-5 text-yoga-muted leading-relaxed text-sm md:text-base">
-                  {faq.answer}
-                </p>
-              </div>
-            </div>
+
+              <AnimatePresence initial={false}>
+                {openIndex === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.44, ease: [0.22, 1, 0.36, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="flex gap-3 px-5 pb-6 pl-[4.4rem] pr-5 md:pl-[5rem] md:pr-8">
+                      <span className="font-mincho text-base text-yoga-rose">A</span>
+                      <p className="min-w-0 text-[0.95rem] leading-[1.95] text-yoga-muted md:text-base">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </Reveal>
           ))}
         </div>
 

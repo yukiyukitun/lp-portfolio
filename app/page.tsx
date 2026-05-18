@@ -9,6 +9,7 @@ import PricingSection from '@/components/PricingSection'
 import FaqSection from '@/components/FaqSection'
 import FinalCtaSection from '@/components/FinalCtaSection'
 import Footer from '@/components/Footer'
+import StickyMobileCta from '@/components/StickyMobileCta'
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         <FinalCtaSection />
       </main>
       <Footer />
+      <StickyMobileCta />
     </>
   )
 }

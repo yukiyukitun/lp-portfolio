@@ -1,5 +1,9 @@
 import type { Metadata } from 'next'
 import { Shippori_Mincho, Noto_Sans_JP } from 'next/font/google'
+import CustomCursor from '@/components/CustomCursor'
+import LoadingScreen from '@/components/LoadingScreen'
+import SmoothScroll from '@/components/SmoothScroll'
+import BackToTopButton from '@/components/BackToTopButton'
 import './globals.css'
 
 const shipporiMincho = Shippori_Mincho({
@@ -33,7 +37,10 @@ export default function RootLayout({
       className={`${shipporiMincho.variable} ${notoSansJP.variable}`}
     >
       <body className="font-sans text-yoga-brown bg-white overflow-x-hidden">
-        {children}
+        <LoadingScreen />
+        <CustomCursor />
+        <BackToTopButton />
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   )

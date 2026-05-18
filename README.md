@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LP Portfolio
 
-## Getting Started
+ポートフォリオ掲載用のLP制作プロジェクトです。
 
-First, run the development server:
+## 制作テーマ
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+女性向けヨガスタジオ体験レッスンLP
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 目的
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+LINE登録から体験レッスン予約へつなげること。
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ターゲット
 
-## Learn More
+25〜45歳の女性。
 
-To learn more about Next.js, take a look at the following resources:
+- ヨガ初心者
+- 運動が苦手な人
+- 忙しい毎日の中で自分の時間を作りたい人
+- 心と体を整えたい人
+- 安心感のあるスタジオを探している人
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## デザイン方向性
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+上品で清潔感があり、やさしく安心感のある女性向けデザインにする。
 
-## Deploy on Vercel
+使用したい雰囲気：
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- 上品
+- 清潔感
+- やさしい
+- 安心感
+- 余白を活かす
+- 女性向け
+- 初心者でも申し込みやすい
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+使用したい色：
+
+- 白
+- ペールグリーン
+- ベージュ
+- くすみピンク
+
+## 制作フロー
+
+1. Image2でLPデザイン画像を作成する
+2. 作成した画像を `references` フォルダに保存する
+3. 画像を参考にして Claude Code CLI で実装する
+4. Next.js / TypeScript / Tailwind CSS でLPを作成する
+5. Codexでレスポンシブ、余白、動き、コード品質を微調整する
+6. 完成後、ポートフォリオ掲載用の説明文を作成する
+
+## 重要ルール
+
+Image2で作成したLP画像を、そのままページ全体に貼り付けることは禁止。
+
+画像はあくまで参考資料として使う。
+
+再現するもの：
+
+- レイアウト
+- 余白
+- 配色
+- タイポグラフィ
+- セクション構成
+- CTA
+- 全体の雰囲気
+
+実装は必ず HTML / CSS / Tailwind CSS の構造として再現する。
+
+## 使用技術
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Claude Code CLI
+- Codex
+
+## フォルダ構成
+
+```txt
+lp-portfolio/
+├── README.md
+├── AGENTS.md
+├── references/
+│   └── memo.md
+└── notes/
+    ├── image2-prompt.md
+    ├── claude-code-prompt.md
+    ├── codex-prompt.md
+    └── portfolio-text.md

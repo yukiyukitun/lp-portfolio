@@ -1,51 +1,96 @@
+'use client'
+
+import Image from 'next/image'
+import { motion } from 'framer-motion'
+import AnimatedText from './AnimatedText'
+import Reveal from './Reveal'
+
 const features = [
   {
-    icon: '🌱',
-    title: '初心者を大切にする指導',
-    desc: 'ヨガが初めての方も安心。基礎から丁寧にお伝えします。',
+    image: '/images/lesson-photo.png',
+    alt: '少人数制ヨガレッスンで丁寧にサポートする様子',
+    title: '少人数制で丁寧にサポート',
+    desc: '1クラス最大8名まで。初めての方も安心してご参加いただけます。',
   },
   {
-    icon: '👥',
-    title: '少人数制（定員6名）',
-    desc: '一人ひとりに目が届く、アットホームな環境です。',
+    image: '/images/studio-photo.png',
+    alt: '自然光が入る明るいヨガスタジオ',
+    title: '明るく清潔感のあるスタジオ',
+    desc: '自然光が差し込む心地よい空間で、リラックスして過ごせます。',
   },
   {
-    icon: '🏡',
-    title: '女性専用の落ち着いた空間',
-    desc: '清潔感のある、リラックスできる専用スタジオです。',
+    image: '/images/lesson-photo.png',
+    alt: 'インストラクターが初心者をやさしく補助するレッスン',
+    title: '初心者にやさしいレッスン',
+    desc: '呼吸やポーズの基礎から丁寧に。無理なく心地よく整えます。',
   },
   {
-    icon: '📍',
-    title: '駅徒歩3分・LINEで簡単予約',
-    desc: '仕事帰りでも通いやすい立地。予約はLINEから。',
+    image: '/images/hero-yoga-photo.png',
+    alt: '明るいスタジオで穏やかにヨガをする女性',
+    title: '通いやすい料金・立地',
+    desc: '駅近で通いやすく、続けやすい料金設定をご用意しています。',
   },
 ]
 
 export default function FeaturesSection() {
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-5xl mx-auto px-6">
-
-        <div className="text-center mb-14">
-          <p className="text-yoga-cta text-xs tracking-[0.3em] uppercase mb-3">Features</p>
-          <h2 className="font-mincho text-3xl md:text-4xl text-yoga-brown">
-            Luna Yoga の特徴
+    <section id="features" className="bg-yoga-base/60 py-18 md:py-22">
+      <div className="mx-auto max-w-7xl px-5 md:px-8">
+        <Reveal className="mb-11 text-center">
+          <div className="mx-auto mb-4 flex max-w-lg items-center gap-4">
+            <span className="fine-line flex-1" />
+            <p className="text-xs tracking-[0.28em] text-yoga-cta">FEATURES</p>
+            <span className="fine-line flex-1" />
+          </div>
+          <h2 className="font-mincho text-2xl tracking-[0.12em] text-yoga-brown md:text-3xl">
+            <AnimatedText text="ルナヨガの特徴" />
           </h2>
-        </div>
+          <svg viewBox="0 0 168 22" className="mx-auto mt-4 h-6 w-44 text-yoga-cta/45" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M69 11H18" />
+            <path d="M44 11c-9-7-19-7-30-1 9 7 20 7 30 1Z" />
+            <path d="M78 11c-8-6-17-6-27-1 8 6 18 6 27 1Z" />
+            <path d="M99 11h51" />
+            <path d="M124 11c9-7 19-7 30-1-9 7-20 7-30 1Z" />
+            <path d="M90 11c8-6 17-6 27-1-8 6-18 6-27 1Z" />
+          </svg>
+        </Reveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((f, i) => (
-            <div
-              key={i}
-              className="flex flex-col items-center text-center bg-yoga-base rounded-2xl p-7 border border-yoga-green/20 hover:border-yoga-green/60 hover:-translate-y-1 hover:shadow-md transition-all duration-300"
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {features.map((feature, index) => (
+            <Reveal
+              key={feature.title}
+              delay={index * 90}
+              className="group overflow-hidden rounded-2xl border border-yoga-pink/35 bg-white shadow-[0_24px_62px_rgb(75_61_51/0.11)]"
             >
-              <span className="text-4xl mb-4" aria-hidden="true">{f.icon}</span>
-              <h3 className="font-mincho text-lg text-yoga-brown mb-2 leading-snug">{f.title}</h3>
-              <p className="text-yoga-muted text-sm leading-relaxed">{f.desc}</p>
-            </div>
+              <motion.article
+                className="h-full"
+                whileHover={{ y: -8, rotateX: 1.4, rotateY: index % 2 === 0 ? -1.2 : 1.2 }}
+                transition={{ type: 'spring', stiffness: 260, damping: 24 }}
+                data-cursor
+              >
+                <motion.div
+                  className="relative h-56 overflow-hidden lg:h-60"
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <Image
+                    src={feature.image}
+                    alt={feature.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.075]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-yoga-brown/20 via-transparent to-white/5" />
+                </motion.div>
+                <div className="p-6">
+                  <h3 className="mb-3 font-mincho text-lg leading-snug text-yoga-brown">
+                    {feature.title}
+                  </h3>
+                  <p className="text-[0.94rem] leading-[1.85] text-yoga-muted">{feature.desc}</p>
+                </div>
+              </motion.article>
+            </Reveal>
           ))}
         </div>
-
       </div>
     </section>
   )

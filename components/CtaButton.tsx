@@ -1,3 +1,9 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { useState } from 'react'
+import AnimatedText from './AnimatedText'
+
 interface CtaButtonProps {
   label: string
   href?: string
@@ -8,7 +14,7 @@ interface CtaButtonProps {
 
 const LINE_ICON = (
   <svg
-    className="w-5 h-5 flex-shrink-0"
+    className="h-5 w-5 flex-shrink-0"
     viewBox="0 0 24 24"
     fill="currentColor"
     aria-hidden="true"
@@ -20,12 +26,12 @@ const LINE_ICON = (
 const SIZE_CLASSES = {
   sm: 'px-5 py-2.5 text-sm',
   md: 'px-8 py-3.5 text-base',
-  lg: 'px-10 py-4 text-lg',
+  lg: 'px-11 py-[1.05rem] text-lg md:px-12 md:text-[1.08rem]',
 }
 
 const VARIANT_CLASSES = {
-  line: 'bg-yoga-line text-white hover:bg-[#05b34c] shadow-md',
-  outline: 'bg-white text-yoga-cta border-2 border-yoga-cta hover:bg-yoga-beige',
+  line: 'bg-yoga-line text-white shadow-[0_14px_30px_rgb(79_164_99/0.24)] hover:bg-yoga-cta hover:shadow-[0_18px_42px_rgb(79_164_99/0.28)]',
+  outline: 'bg-white/70 text-yoga-cta border border-yoga-cta/35 hover:bg-yoga-beige/80',
 }
 
 export default function CtaButton({
@@ -35,21 +41,45 @@ export default function CtaButton({
   variant = 'line',
   className = '',
 }: CtaButtonProps) {
+  const [isHovered, setIsHovered] = useState(false)
+
   return (
-    <a
+    <motion.a
       href={href}
+      aria-label={label}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      whileHover={{ y: -5, scale: 1.018 }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ type: 'spring', stiffness: 420, damping: 28 }}
       className={[
-        'inline-flex items-center justify-center gap-2',
-        'font-medium rounded-full',
+        'group inline-flex items-center justify-center gap-2',
+        'relative overflow-hidden font-medium rounded-full',
         'transition-all duration-300',
-        'hover:-translate-y-0.5 hover:shadow-lg',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yoga-cta/40 focus-visible:ring-offset-2',
         SIZE_CLASSES[size],
         VARIANT_CLASSES[variant],
         className,
       ].join(' ')}
     >
+      {variant === 'line' && (
+        <span
+          className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 -skew-x-12 bg-white/25 opacity-0 blur-sm transition-all duration-700 group-hover:left-[120%] group-hover:opacity-100"
+          aria-hidden="true"
+        />
+      )}
       {variant === 'line' && LINE_ICON}
-      {label}
-    </a>
+      <span>
+        <AnimatedText text={label} />
+      </span>
+      <motion.span
+        className="ml-1 inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/22 text-sm"
+        animate={{ x: isHovered ? 6 : 0 }}
+        transition={{ type: 'spring', stiffness: 420, damping: 28 }}
+        aria-hidden="true"
+      >
+        →
+      </motion.span>
+    </motion.a>
   )
 }

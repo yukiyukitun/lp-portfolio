@@ -1,55 +1,54 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import AnimatedText from './AnimatedText'
+import Reveal from './Reveal'
+
 const reasons = [
-  {
-    num: '01',
-    title: '全員が初心者からスタートできる',
-    desc: '経験者向けの難しいポーズは一切ありません。体の硬い方も、運動が苦手な方も安心して参加いただけます。',
-  },
-  {
-    num: '02',
-    title: '少人数制で自分のペースで続けられる',
-    desc: '定員6名の少人数制。インストラクターが一人ひとりに目を向け、あなたのペースでレッスンを進めます。',
-  },
-  {
-    num: '03',
-    title: '夜・土日クラスも充実',
-    desc: '平日の夜や週末のクラスも豊富。仕事帰りでも、休日の朝でも、ライフスタイルに合わせて通えます。',
-  },
-  {
-    num: '04',
-    title: '体験後の強引な勧誘は一切なし',
-    desc: '体験レッスン後に無理なお誘いはしません。「続けてみたい」と感じた方だけ、ご検討ください。',
-  },
+  { icon: '♡', title: '初心者満足度 98%', desc: 'はじめての方でも安心して続けられるようサポート。' },
+  { icon: '☼', title: '豊富なレッスン時間', desc: '朝から夜まで開講。生活リズムに合わせて選べます。' },
+  { icon: '♧', title: '経験豊富な講師', desc: '資格を持つ講師が一人ひとりに寄り添います。' },
+  { icon: '◌', title: '女性専用の安心空間', desc: '周りを気にせず、穏やかな時間を過ごせます。' },
+  { icon: '▢', title: 'LINEで簡単予約', desc: '空き状況の確認から予約までLINEで完結。' },
 ]
 
 export default function ReasonsSection() {
   return (
-    <section className="py-20 bg-yoga-base">
-      <div className="max-w-5xl mx-auto px-6">
-
-        <div className="text-center mb-14">
-          <p className="text-yoga-cta text-xs tracking-[0.3em] uppercase mb-3">Why Luna Yoga</p>
-          <h2 className="font-mincho text-3xl md:text-4xl text-yoga-brown">
-            Luna Yoga が選ばれる理由
+    <section className="bg-yoga-base/65 py-16 md:py-20">
+      <div className="mx-auto max-w-7xl px-5 md:px-8">
+        <Reveal className="mb-11 text-center">
+          <div className="mx-auto mb-4 flex max-w-lg items-center gap-4">
+            <span className="fine-line flex-1" />
+            <p className="text-xs tracking-[0.28em] text-yoga-cta">WHY LUNA YOGA</p>
+            <span className="fine-line flex-1" />
+          </div>
+          <h2 className="font-mincho text-2xl tracking-[0.12em] text-yoga-brown md:text-3xl">
+            <AnimatedText text="ルナヨガが選ばれる理由" />
           </h2>
-        </div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {reasons.map((r) => (
-            <div
-              key={r.num}
-              className="flex gap-5 bg-white rounded-2xl p-7 border border-yoga-beige hover:border-yoga-green/40 hover:shadow-sm transition-all duration-200"
+        <div className="grid grid-cols-1 gap-7 rounded-2xl bg-white/35 py-3 md:grid-cols-5 md:gap-0">
+          {reasons.map((reason, index) => (
+            <Reveal
+              key={reason.title}
+              delay={index * 80}
+              className="border-yoga-pink/45 px-5 py-5 text-center md:border-r md:px-7 md:last:border-r-0"
             >
-              <span className="font-mincho text-3xl text-yoga-green/70 flex-shrink-0 leading-none pt-1">
-                {r.num}
-              </span>
-              <div>
-                <h3 className="font-mincho text-lg text-yoga-brown mb-2">{r.title}</h3>
-                <p className="text-yoga-muted text-sm leading-relaxed">{r.desc}</p>
+              <motion.article
+                className="h-full"
+                whileHover={{ y: -7, scale: 1.015 }}
+                transition={{ type: 'spring', stiffness: 280, damping: 24 }}
+                data-cursor
+              >
+              <div className="mx-auto mb-5 grid h-20 w-20 place-items-center rounded-full border border-yoga-pink/55 bg-white/80 font-mincho text-4xl text-yoga-rose shadow-[0_14px_34px_rgb(75_61_51/0.06)]">
+                {reason.icon}
               </div>
-            </div>
+              <h3 className="font-mincho text-lg font-semibold text-yoga-brown">{reason.title}</h3>
+              <p className="mt-3 text-sm leading-[1.85] text-yoga-muted">{reason.desc}</p>
+              </motion.article>
+            </Reveal>
           ))}
         </div>
-
       </div>
     </section>
   )
