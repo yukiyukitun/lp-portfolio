@@ -11,7 +11,7 @@ export default function StickyMobileCta() {
   return (
     <motion.div
       style={{ y, opacity }}
-      className="fixed inset-x-0 bottom-0 z-50 border-t border-yoga-green/25 bg-white/88 px-4 py-3 shadow-[0_-14px_40px_rgb(75_61_51/0.12)] backdrop-blur-md md:hidden"
+      className="fixed inset-x-0 bottom-0 z-[70] border-t border-yoga-green/25 bg-white/88 px-4 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 shadow-[0_-14px_40px_rgb(75_61_51/0.12)] backdrop-blur-md md:hidden"
     >
       <CtaButton
         label="LINEで空き状況を確認"

@@ -59,7 +59,7 @@ export default function TrialSection() {
         <Reveal className="mb-11 text-center">
           <div className="mx-auto mb-4 flex max-w-lg items-center gap-4">
             <span className="fine-line flex-1" />
-            <p className="text-xs tracking-[0.28em] text-yoga-cta">TRIAL LESSON</p>
+            <p className="font-elegant text-sm font-semibold text-yoga-cta">TRIAL LESSON</p>
             <span className="fine-line flex-1" />
           </div>
           <h2 className="font-mincho text-2xl tracking-[0.12em] text-yoga-brown md:text-3xl">

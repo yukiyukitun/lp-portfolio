@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main>
+      <main className="pb-24 md:pb-0">
         <HeroSection />
         <ConcernSection />
         <FeaturesSection />

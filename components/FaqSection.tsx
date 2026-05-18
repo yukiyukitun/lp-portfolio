@@ -63,7 +63,7 @@ export default function FaqSection() {
         <Reveal className="mb-10 text-center">
           <div className="mx-auto mb-5 flex max-w-xl items-center gap-4">
             <span className="fine-line flex-1" />
-            <p className="text-xs uppercase tracking-[0.3em] text-yoga-cta">FAQ</p>
+            <p className="font-elegant text-sm font-semibold uppercase text-yoga-cta">FAQ</p>
             <span className="fine-line flex-1" />
           </div>
           <h2 className="font-mincho text-3xl text-yoga-brown md:text-4xl">

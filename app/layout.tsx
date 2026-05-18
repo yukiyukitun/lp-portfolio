@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Shippori_Mincho, Noto_Sans_JP } from 'next/font/google'
+import { Cormorant_Garamond, Noto_Sans_JP, Shippori_Mincho } from 'next/font/google'
 import CustomCursor from '@/components/CustomCursor'
 import LoadingScreen from '@/components/LoadingScreen'
 import SmoothScroll from '@/components/SmoothScroll'
@@ -20,6 +20,13 @@ const notoSansJP = Noto_Sans_JP({
   preload: false,
 })
 
+const cormorantGaramond = Cormorant_Garamond({
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-elegant-loaded',
+  display: 'swap',
+  preload: false,
+})
+
 export const metadata: Metadata = {
   title: 'Luna Yoga | 初心者歓迎の少人数制ヨガスタジオ',
   description:
@@ -34,7 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${shipporiMincho.variable} ${notoSansJP.variable}`}
+      className={`${shipporiMincho.variable} ${notoSansJP.variable} ${cormorantGaramond.variable}`}
     >
       <body className="font-sans text-yoga-brown bg-white overflow-x-hidden">
         <LoadingScreen />

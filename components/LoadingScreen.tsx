@@ -63,7 +63,7 @@ export default function LoadingScreen() {
               Luna Yoga
             </motion.p>
             <motion.p
-              className="mb-7 text-xs tracking-[0.34em] text-yoga-muted"
+              className="mb-7 font-elegant text-sm font-medium text-yoga-muted"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.24, duration: 0.72 }}
@@ -78,7 +78,7 @@ export default function LoadingScreen() {
                 transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
               />
             </div>
-            <p className="mt-5 font-mono text-xs tracking-[0.3em] text-yoga-muted">
+            <p className="mt-5 font-elegant text-sm font-semibold text-yoga-muted">
               {String(progress).padStart(3, '0')}
             </p>
           </div>
