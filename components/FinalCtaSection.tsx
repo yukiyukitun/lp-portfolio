@@ -9,22 +9,22 @@ export default function FinalCtaSection() {
       <div className="mx-auto grid max-w-7xl items-center gap-8 px-5 md:grid-cols-[0.84fr_1.38fr_0.56fr] md:px-8">
         <Reveal className="relative h-64 overflow-hidden rounded-[1.6rem] md:hidden">
           <Image
-            src="/images/hero-yoga-photo.png"
+            src="/images/cta-yoga-photo.png"
             alt="明るいスタジオでヨガを楽しむ女性"
             fill
             sizes="100vw"
-            className="object-cover object-[60%_center]"
+            className="object-cover object-[50%_45%]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-white/45 to-transparent" />
         </Reveal>
 
         <Reveal className="relative hidden h-80 overflow-hidden rounded-r-[2rem] md:block">
           <Image
-            src="/images/hero-yoga-photo.png"
+            src="/images/cta-yoga-photo.png"
             alt="明るいスタジオでヨガを楽しむ女性"
             fill
             sizes="35vw"
-            className="object-cover object-[60%_center]"
+            className="object-cover object-[50%_45%]"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-white/25 to-transparent" />
         </Reveal>

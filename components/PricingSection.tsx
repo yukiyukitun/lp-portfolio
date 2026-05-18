@@ -48,11 +48,11 @@ export default function PricingSection() {
             data-cursor
           >
               <Image
-                src="/images/studio-photo.png"
+                src="/images/feature-studio-interior-photo.png"
                 alt="明るいヨガスタジオの料金案内イメージ"
                 fill
                 sizes="(max-width: 768px) 100vw, 30vw"
-                className="object-cover transition-transform duration-700 ease-out hover:scale-[1.045]"
+                className="object-cover object-center transition-transform duration-700 ease-out hover:scale-[1.045]"
               />
           </motion.div>
 

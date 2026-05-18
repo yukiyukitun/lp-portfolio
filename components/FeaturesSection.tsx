@@ -7,28 +7,32 @@ import Reveal from './Reveal'
 
 const features = [
   {
-    image: '/images/lesson-photo.png',
+    image: '/images/feature-small-class-photo.png',
     alt: '少人数制ヨガレッスンで丁寧にサポートする様子',
     title: '少人数制で丁寧にサポート',
     desc: '1クラス最大8名まで。初めての方も安心してご参加いただけます。',
+    imageClassName: 'object-center',
   },
   {
-    image: '/images/studio-photo.png',
+    image: '/images/feature-studio-interior-photo.png',
     alt: '自然光が入る明るいヨガスタジオ',
     title: '明るく清潔感のあるスタジオ',
     desc: '自然光が差し込む心地よい空間で、リラックスして過ごせます。',
+    imageClassName: 'object-center',
   },
   {
-    image: '/images/lesson-photo.png',
+    image: '/images/feature-instructor-support-photo.png',
     alt: 'インストラクターが初心者をやさしく補助するレッスン',
     title: '初心者にやさしいレッスン',
     desc: '呼吸やポーズの基礎から丁寧に。無理なく心地よく整えます。',
+    imageClassName: 'object-[50%_42%]',
   },
   {
-    image: '/images/hero-yoga-photo.png',
+    image: '/images/feature-relax-photo.png',
     alt: '明るいスタジオで穏やかにヨガをする女性',
     title: '通いやすい料金・立地',
     desc: '駅近で通いやすく、続けやすい料金設定をご用意しています。',
+    imageClassName: 'object-[50%_45%]',
   },
 ]
 
@@ -77,7 +81,7 @@ export default function FeaturesSection() {
                     alt={feature.alt}
                     fill
                     sizes="(max-width: 768px) 100vw, 25vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.075]"
+                    className={`object-cover transition-transform duration-700 ease-out group-hover:scale-[1.075] ${feature.imageClassName}`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-yoga-brown/20 via-transparent to-white/5" />
                 </motion.div>
